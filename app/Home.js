@@ -1,11 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-
-// import ProductRating from "@/components/ProductRating";
-// import ProductItem from "@/components/ProductItem";
+import ProductRating from "@/components/ProductRating";
 import { data } from "@/utils/data";
-import AddToCart from "@/components/AddToCart";
 
+// import ProductItem from "@/components/ProductItem";
 export default function Home() {
 	const { products } = data;
 	console.log(products);
@@ -16,7 +14,6 @@ export default function Home() {
 	return (
 		<div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
 			{products.map((product) => (
-				// <ProductItem key={product.id} product={product}/>
 				<div
 					className='card'
 					key={product.id}
@@ -35,18 +32,13 @@ export default function Home() {
 						<Link href={`/product/${product.id}`}>
 							<h2 className='text-lg'>{product.name}</h2>
 						</Link>
-						{/* <ProductRating
+						<ProductRating
 							rate={product.rating}
 							count={product.numReviews}
-						/> */}
+						/>
 						<p className='mb-2'>{product.description}</p>
 						<p>${product.price}</p>
-						<AddToCart
-							showQty={false}
-							product={product}
-							increasePerClick={true}
-							redirect={false}
-						/>
+						<button>Add to Cart</button>
 					</div>
 				</div>
 			))}
