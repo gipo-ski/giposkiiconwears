@@ -5,8 +5,7 @@ const initialState = Cookies.get("cart")
 	? { ...JSON.parse(Cookies.get("cart")), loading: true }
 	: {
 			loading: true,
-			cartItems: [],
-	  };
+			cartItems: [], };
 
 const addDecimals = (num) => {
 	return (Math.round(num * 100) / 100).toFixed(2); //12.3456 to 12.35
