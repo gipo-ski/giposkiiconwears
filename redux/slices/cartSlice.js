@@ -5,7 +5,11 @@ const initialState = Cookies.get("cart")
 	? { ...JSON.parse(Cookies.get("cart")), loading: true }
 	: {
 			loading: true,
-			cartItems: [], };
+			cartItems: [],
+			shippingAddress: {},
+			paymentMethod: "",
+			// eslint-disable-next-line no-mixed-spaces-and-tabs
+	  };
 
 const addDecimals = (num) => {
 	return (Math.round(num * 100) / 100).toFixed(2); //12.3456 to 12.35
@@ -51,11 +55,20 @@ const cartSlice = createSlice({
 			);
 			Cookies.set("cart", JSON.stringify(state));
 		},
+		saveShippingAddress: (state, action) => {
+			state.shippingAddress = action.payload;
+			Cookies.set("cart", JSON.stringify(state));
+		},
+		savePaymentMethod: (state, action) => {
+			state.paymentMethod = action.payload;
+			Cookies.set("cart", JSON.stringify(state));
+		},
 		hideLoading: (state) => {
 			state.loading = false;
 		},
 	},
 });
 
-export const { addToCart, removeFromCart, hideLoading } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, hideLoading } =
+	cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addToCart, removeFromCart } from "../redux/slices/cartSlice";
@@ -7,6 +8,7 @@ import { addToCart, removeFromCart } from "../redux/slices/cartSlice";
 export default function CartSidebar() {
 	const { loading, cartItems, itemsPrice } = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
+	const pathname = usePathname();
 
 	const addToCartHandler = (product, qty) => {
 		dispatch(addToCart({ ...product, qty }));
@@ -16,7 +18,15 @@ export default function CartSidebar() {
 	};
 
 	return (
-		<div className='fixed top-0 right-0 w-32 h-full shadow-lg border-l border-l-gray-700 overflow-scroll'>
+		<div
+			className={
+				loading
+					? ""
+					: cartItems.length > 0 && pathname.indexOf("/product") >= 0
+					? "fixed top-0 right-0 w-32 h-full shadow-lg border-l border-l-gray-700 overflow-scroll"
+					: "hidden"
+			}
+		>
 			{loading ? (
 				<div className='py-5 px-2'>Loading...</div>
 			) : cartItems.length === 0 ? (
