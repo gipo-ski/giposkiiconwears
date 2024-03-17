@@ -22,7 +22,7 @@ export default function ShippingAddressPage() {
 
 	useEffect(() => {
 		if (!shippingAddress) {
-			return;
+			return <p>Please enter full shipping address.</p>;
 		} else {
 			setValue("fullName", shippingAddress.fullName);
 			setValue("address", shippingAddress.address);

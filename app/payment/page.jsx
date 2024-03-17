@@ -36,7 +36,8 @@ export default function ShippingAddressPage() {
 	};
 
 	return (
-		<div className='min-w-full'>
+		// <div className='min-w-full'>
+		<div>
 			<CheckoutWizard activeStep={2} />
 			<form
 				className='mx-auto max-w-screen-md'
@@ -58,7 +59,12 @@ export default function ShippingAddressPage() {
 								required: "Please select Payment Method",
 							})}
 						/>
-						<label htmlFor={payment}>{payment}</label>
+						<label
+							htmlFor={payment}
+							className='p-2'
+						>
+							{payment}
+						</label>
 					</div>
 				))}
 				{errors.paymentMethod && (

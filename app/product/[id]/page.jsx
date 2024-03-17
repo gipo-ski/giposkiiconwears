@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { data } from "@/utils/data";
 import AddToCart from "@/components/AddToCart";
-// import ProductRating from "@/components/ProductRating";
+import ProductRating from "@/components/ProductRating";
 
 export default function ProductDetailPage({ params: { id } }) {
 	const product = data.products.find((x) => x.id === id);
@@ -13,7 +13,7 @@ export default function ProductDetailPage({ params: { id } }) {
 
 	return (
 		<div>
-			<div className="py-2">
+			<div className='py-2'>
 				<Link href='/'>Back to Products</Link>
 			</div>
 			<div className='grid md:grid-cols-4 md:gap-3'>
@@ -36,7 +36,10 @@ export default function ProductDetailPage({ params: { id } }) {
 							<h1 className='text-lg'>{product.name}</h1>
 						</li>
 						<li>
-							{/* <ProductRating rate={product.rating} count={ product.numReviews} /> */}
+							<ProductRating
+								rate={product.rating}
+								count={product.numReviews}
+							/>
 						</li>
 						<li>
 							<hr className='my-3' />
@@ -49,8 +52,9 @@ export default function ProductDetailPage({ params: { id } }) {
 					<div className='card p-5'>
 						<div className='flex justify-between mb-2 '>
 							<div>Price</div>
-							<div>${product.price}</div>
+							<div>£{product.price}</div>
 						</div>
+
 						<AddToCart
 							product={product}
 							redirect={true}

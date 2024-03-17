@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -22,7 +23,8 @@ export default function CartSidebar() {
 			className={
 				loading
 					? ""
-					: cartItems.length > 0 && pathname.indexOf("/product") >= 0
+					: cartItems.length > 0 &&
+					  (pathname === "/" || pathname.indexOf("/product/") >= 0)
 					? "fixed top-0 right-0 w-32 h-full shadow-lg border-l border-l-gray-700 overflow-scroll"
 					: "hidden"
 			}
@@ -30,13 +32,12 @@ export default function CartSidebar() {
 			{loading ? (
 				<div className='py-5 px-2'>Loading...</div>
 			) : cartItems.length === 0 ? (
-				<div className='py-5 px-2'>CartSidebar is empty</div>
+				<div className='py-5 px-2'>Cart is empty</div>
 			) : (
 				<>
 					<div className='flex flex-col items-center p-2 border-b border-b-gray-600 '>
 						<div>Subtotal</div>
-						<div className='font-bold text-orange-700'>${itemsPrice}</div>
-
+						<div className='font-bold text-orange-700'>£{itemsPrice}</div>
 						<div>
 							<Link
 								href='/cart'
@@ -60,7 +61,7 @@ export default function CartSidebar() {
 										width={50}
 										height={50}
 										className='p-1'
-									></Image>
+									/>
 								</Link>
 								<select
 									value={item.qty}
@@ -78,7 +79,7 @@ export default function CartSidebar() {
 									))}
 								</select>
 								<button
-									className='deafault-button'
+									className='default-button mt-2'
 									onClick={() => removeFromCartHandler(item.id)}
 								>
 									Delete

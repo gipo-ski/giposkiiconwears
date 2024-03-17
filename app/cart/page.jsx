@@ -12,7 +12,7 @@ export default function CartPage() {
 	const router = useRouter();
 	const { loading, cartItems, itemsPrice } = useSelector((state) => state.cart);
 
-	const removeFronCartHandler = (id) => {
+	const removeFromCartHandler = (id) => {
 		dispatch(removeFromCart(id));
 	};
 
@@ -83,7 +83,7 @@ export default function CartPage() {
 										<td className='p-5 text-center'>
 											<button
 												className='default-button'
-												onClick={() => removeFronCartHandler(item.id)}
+												onClick={() => removeFromCartHandler(item.id)}
 											>
 												Delete
 											</button>
@@ -98,8 +98,13 @@ export default function CartPage() {
 							<ul>
 								<li>
 									<div className='pb-3 text-xl'>
-										Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)}) : £
-										{itemsPrice}
+										Subtotal (
+										{cartItems.reduce(
+											(accumulator, currentItem) =>
+												accumulator + currentItem.qty,
+											0
+										)}
+										) : £{itemsPrice}
 									</div>
 								</li>
 								<li>

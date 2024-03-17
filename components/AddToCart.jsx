@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
+
 import { addToCart } from "@/redux/slices/cartSlice";
+
 export default function AddToCart({
 	product,
 	showQty = true,

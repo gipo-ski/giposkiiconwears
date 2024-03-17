@@ -2,15 +2,14 @@
 
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useState } from "react";
 
-export default function ProductRating(rate, count) {
-	// const[rating, setRating] = useState(0)
+
+export default function ProductRating({ rate, count }) {
 
 	return (
-		<div className='flex bg-slate-300 w-24 h-10'>
+		<div className='flex'>
 			<Rating
-				style={{ maxWidth: 250 }}
+				style={{ maxWidth: 100 }}
 				value={rate}
 				readOnly
 			/>

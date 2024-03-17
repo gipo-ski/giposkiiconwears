@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import ProductRating from "./ProductRating";
 
+
+import AddToCart from "./AddToCart";
+
 export default function ProductItem({ product }) {
      if (!product) {
 				// Handle the case when product is undefined
@@ -28,9 +31,14 @@ export default function ProductItem({ product }) {
 					rate={product.rating}
 					count={product.numReviews}
 				/>
-				<p className="mb-2">{product.brand}</p>
-				<p>${product.price}</p>
-				<button>Add to Cart</button>
+				<p className='mb-2'>{product.brand}</p>
+				<p>£{product.price}</p>
+				<AddToCart
+					showQty={false}
+					product={product}
+					increasePerClick={true}
+					redirect={false}
+				/>
 			</div>
 		</div>
 	);

@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
 import CheckoutWizard from "@/components/CheckoutWizard";
-// import ShippingAddressPage from "../shipping/page";
 
 export default function PlaceOrderScreen() {
 	const {

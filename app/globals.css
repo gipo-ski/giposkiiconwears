@@ -15,7 +15,7 @@
 	align-items: center;
 }
 
-body {
+/* body {
 	min-height: 100vh;
 	display: flex;
 	color: rgb(var(--foreground-rgb));
@@ -31,7 +31,7 @@ body {
 	.text-balance {
 		text-wrap: balance;
 	}
-}
+} */
 
 input,
 select,
@@ -39,7 +39,7 @@ textarea {
 	@apply rounded border p-2 outline-none ring-indigo-300 focus:ring dark:text-white dark:bg-gray-800;
 }
 .card {
-	@apply mb-5 block rounded-lg border border-gray-200 shadow-md;
+	@apply mb-5 block rounded-lg border border-gray-200 shadow-md hover:shadow-lg;
 }
 
 .cart-badge {
